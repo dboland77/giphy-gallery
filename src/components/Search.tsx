@@ -11,8 +11,8 @@ function useGiphy(query: string): [any[], boolean] {
         const QUERY = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${query}&limit=7&offset=0&lang=en`;
         const response = await fetch(QUERY);
         const { data } = await response.json();
-
-        setResults(data.map((item: any) => item.images.preview.mp4));
+        console.log(data[0].id)
+        setResults(data.map((item: any) => `https://media.giphy.com/media/${item.id}/giphy.gif`));
       } finally {
         setLoading(false);
       }
