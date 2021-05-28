@@ -1,5 +1,5 @@
 {
-  "name": "cra-typescript-example",
+  "name": "giphy-gallery",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
