@@ -3,7 +3,9 @@ import Search from "./components/Search"
 
 function App() {
   return (
-    <Search/>
+    <div className = "bg-blue-400 min-h-screen flex item-center justify-center">
+        <Search/>
+    </div>
   );
 }
 

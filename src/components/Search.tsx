@@ -11,8 +11,11 @@ function useGiphy(query: string): [any[], boolean] {
         const QUERY = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${query}&limit=7&offset=0&lang=en`;
         const response = await fetch(QUERY);
         const { data } = await response.json();
-        console.log(data[0].id)
-        setResults(data.map((item: any) => `https://media.giphy.com/media/${item.id}/giphy.gif`));
+        setResults(
+          data.map(
+            (item: any) => `https://media.giphy.com/media/${item.id}/giphy.gif`
+          )
+        );
       } finally {
         setLoading(false);
       }
@@ -35,7 +38,7 @@ export default function HookedSearch() {
   return (
     <div>
       <header>
-        <h1>Search the Giphy Gallery</h1>
+        <h1 className="font-serif text-5xl">Search the Giphy Gallery</h1>
       </header>
 
       <form
@@ -60,9 +63,13 @@ export default function HookedSearch() {
         {loading ? (
           "Loading"
         ) : (
-          <div>
-            {results.map((item) => {
-              return <img alt={item} key={item} src={item} />;
+          <div className="grid grid-cols-3">
+            {results.map((item,index) => {
+              return (
+              <div key={index}>
+                 <img alt={item} key={index} src={item} />
+              </div>
+                   );
             })}
           </div>
         )}
