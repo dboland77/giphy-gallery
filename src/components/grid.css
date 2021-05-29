@@ -1,0 +1,42 @@
+:root{
+	--gridunit: 50px
+}
+.grid {
+  display: grid;
+  grid-template-columns: calc(11*var(--gridunit)) calc(5*var(--gridunit))  calc(2*var(--gridunit));
+	grid-auto-rows: calc(2*var(--gridunit));
+	column-gap: var(--gridunit);
+	row-gap: var(--gridunit);
+	margin-top: 10%;
+}
+
+.div1{
+	background-color: red;
+	grid-area: 1/1/5/1;
+}
+.div2{
+	background-color: blue;
+	grid-area: 1/2/3/2
+}
+.div3{
+	background-color: white;
+	grid-area: 3/2/5/2
+}
+.div4{
+	background-color: red;
+}
+.div5{
+	background-color:blue;
+}
+.div6{
+	background-color:white;
+}
+.div7{
+	background-color: red;
+}
+
+img{
+	height:100%;
+	width: 100%;
+	object-fit:cover;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./grid.css"
 
 function useGiphy(query: string): [any[], boolean] {
   const [results, setResults] = useState<any[]>([]);
@@ -38,10 +39,10 @@ export default function HookedSearch() {
   return (
     <div>
       <header>
-        <h1 className="font-serif text-5xl">Search the Giphy Gallery</h1>
+        <h1 className="font-serif text-5xl m-4">Search the Giphy Gallery</h1>
       </header>
 
-      <form
+      <form className="item-center"
         onSubmit={(e) => {
           e.preventDefault();
           setQuery(search);
@@ -53,27 +54,30 @@ export default function HookedSearch() {
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search for GIFs here ..."
           autoComplete="search-gif"
-        />
-
-        <button>Search</button>
+          />  
       </form>
 
       {/* Search results */}
-      <div>
-        {loading ? (
-          "Loading"
-        ) : (
-          <div className="grid grid-cols-3">
-            {results.map((item,index) => {
-              return (
-              <div key={index}>
-                 <img alt={item} key={index} src={item} />
-              </div>
-                   );
-            })}
-          </div>
-        )}
-      </div>
+
+      {loading ? (
+        "Loading"
+      ) : (
+            <div className="grid">
+              {results.map((item, index) => {      
+                  return (
+                    <div className={`div${index+1}`} key={index}>
+                      <img
+                        className="rounded shadow-md"
+                        alt={item}
+                        key={index}
+                        src={item}
+                      />
+                    </div>
+                  );
+              })}
+            </div>
+       
+      )}
     </div>
   );
 }
